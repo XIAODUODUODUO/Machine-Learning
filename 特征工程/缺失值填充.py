@@ -34,7 +34,9 @@ if __name__ == '__main__':
     imp_mean = SimpleImputer(missing_values=np.nan, strategy='mean')  # 均值填充
     imp_median = SimpleImputer(missing_values=np.nan, strategy='median')  # 中位数填充
     imp_most_frequent = SimpleImputer(missing_values=np.nan, strategy='most_frequent')  # 众数填充
+    imp_constant = SimpleImputer(missing_values=np.nan, strategy='constant',fill_value=555)  # 自定义值填充
     print(imp_mean.fit_transform(x))
     print(imp_mean.statistics_)
     print(imp_median.fit_transform(x))
     print(imp_most_frequent.fit_transform(x))
+    print(imp_constant.fit_transform(x))
