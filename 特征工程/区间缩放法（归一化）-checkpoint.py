@@ -1,5 +1,12 @@
 """
 归一化：将数据缩放到一个特定的范围，通常是 [0, 1] 或 [-1, 1]。它的目的是确保不同特征的数据在同一尺度上，特别适用于距离度量方法（如 k 近邻、SVM）和神经网络。
+    归一化公式为：
+        x'_{ij} = (x_{ij} - min_j) / (max_j - min_j)
+        其中：
+        - x'_{ij} 是归一化后的第 i 个样本的第 j 个特征值，
+        - x_{ij} 是原始数据集中第 i 个样本的第 j 个特征值，
+        - min_j 是第 j 列特征的最小值，
+        - max_j 是第 j 列特征的最大值。
 
 https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler
 MinMaxScaler:通过将每个特征缩放到给定范围来转换特征。该估计器单独缩放和平移每个特征，使得它处于训练集的给定范围内，例如介于零和一之间。
