@@ -23,7 +23,7 @@ copy：boolean，（默认）True，表示对数据的副本进行处理，False
 add_indicator：boolean，（默认）False，True则会在数据后面加入n列由0和1构成的同样大小的数据，0表示所在位置非缺失值，1表示所在位置为缺失值。
 fit(X):返回值为SimpleImputer()类，通过fit(X)方法可以计算X矩阵的相关值的大小，以便填充其他缺失数据矩阵时进行使用。
 transform(X)：填补缺失值，一般使用该方法前要先用fit()方法对矩阵进行处理。
-fit_transform(X)：fit(X)+transform(X)
+fit_transform(X)：fit(X)学习数据中的特征和类别+transform(X)将数据转换为数值矩阵形式。
 statistics_：每一列的缺失值。不论是否有null值,都会计算出来
 """
 import numpy as np
