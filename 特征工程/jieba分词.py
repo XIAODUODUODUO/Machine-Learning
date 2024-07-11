@@ -1,3 +1,6 @@
+"""
+https://github.com/fxsjy/jieba
+"""
 #引入jieba模块
 #集成百度LAC
 import jieba
