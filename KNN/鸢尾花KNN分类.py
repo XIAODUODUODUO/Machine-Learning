@@ -157,9 +157,9 @@ if __name__ == '__main__':
     """
     # 2、数据进行清洗 缺失值处理、异常值处理
     # NOTE: 不需要做数据处理
-    df = df.apply(lambda row: pd.Series(parse_record(names, row), index=names), axis=1)
-    df['y'] = df['y'].astype(np.int32)  # 将y列的数据类型转换为int32。
-    df.head()
+    # df = df.apply(lambda row: pd.Series(parse_record(names, row), index=names), axis=1)
+    # df['y'] = df['y'].astype(np.int32)  # 将y列的数据类型转换为int32。
+    # df.head()
     """
         x1   x2   x3   x4  y
     0  5.1  3.5  1.4  0.2  0
@@ -197,8 +197,10 @@ if __name__ == '__main__':
     # train_size：给定划分之后的训练数据的占比是多少，默认0.75
     # random_state：给定在数据划分过程中，使用到的随机数种子，默认为None,使用当前的时间戳，给定非None的值，可以保证多少运行的结果是一致的
     x_train, x_test, y_train, y_test = train_test_split(
-        x, y, train_size=0.75, random_state=1)
+        x, y, train_size=0.2, random_state=10)
     x_train.shape, type(x_train)
+    print(y_train)
+    print(y_test)
     """
     训练数据X的格式：(112, 4)，以及类型：<class 'pandas.core.frame.DataFrame'>
     """
@@ -213,22 +215,21 @@ if __name__ == '__main__':
     # 5、特征工程 正则化、标准化、文本的处理
     # 数据差异小，可不做归一化处理
     # 6、构建模型
-    KNN = KNeighborsClassifier(n_neighbors=3,weights='uniform', algorithm='kd_tree')
+    KNN = KNeighborsClassifier(n_neighbors=3,weights='distance', algorithm='auto')
     # 7、训练模型
     KNN.fit(x_train, y_train)
     # 8、模型效果的评估（效果不好，返回第二步进行优化，达到要求）
     train_predict = KNN.predict(x_train)
     test_predict = KNN.predict(x_test)
-    KNN.score(x_test, y_test)
+    print(KNN.score(x_test, y_test))
     """
     KNN算法：测试集上的效果（准确率）：1.0
     """
-    KNN.score(x_train, y_train)
+    print(KNN.score(x_train, y_train))
     """
     KNN算法：训练集上的效果（准确率）：1.0
     """
-
-    accuracy_score(y_true=y_train, y_pred=train_predict)
+    print(accuracy_score(y_true=y_train, y_pred=train_predict))
     """
     评分：1.0
     """
